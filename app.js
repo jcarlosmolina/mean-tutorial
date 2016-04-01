@@ -12,8 +12,18 @@ app.controller('MainCtrl', [
 			{title: 'post 5', upvotes: 4}
 		];
 
-		$scope. addPost = function(){
-			$scope.posts.push( {title: $scope.title, upvotes: 0 } );
+		var addPostPreconditions = function(){
+			return ($scope.title && $scope.title !== '');
+		};
+
+		var addPostImplementation = function(){
+			$scope.posts.push( { title: $scope.title, upvotes: 0 } );
 			$scope.title = '';
+		};
+
+		$scope. addPost = function(){
+			if (addPostPreconditions() ) {
+				addPostImplementation();
+			}
 		};
 }]);
