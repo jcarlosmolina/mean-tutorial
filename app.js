@@ -21,9 +21,13 @@ app.controller('MainCtrl', [
 			$scope.title = '';
 		};
 
-		$scope. addPost = function(){
+		$scope.addPost = function(){
 			if (addPostPreconditions() ) {
 				addPostImplementation();
 			}
+		};
+
+		$scope.incrementUpvotes = function(post) {
+			post.upvotes += 1;
 		};
 }]);
